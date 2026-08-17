@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JACO Y ASOCIADOS — Trámites Vehiculares</title>
+<style>
+:root{--orange:#f28c00;--orange2:#ffad22;--bg:#11100e;--panel:#1d1a16;--panel2:#252019;--text:#fff;--muted:#b9b4ad;--green:#35b86b;--red:#e85d5d;--line:#3a332b}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:linear-gradient(135deg,#0b0b0a,#19140e);color:var(--text)}
+button,input,select{font:inherit}button{cursor:pointer}
+.app{min-height:100vh;display:flex}.side{width:250px;background:#0b0b0a;border-right:1px solid var(--line);padding:22px 16px;position:sticky;top:0;height:100vh}
+.brand{text-align:center;margin-bottom:25px}.brand img{width:110px;height:82px;object-fit:contain;border-radius:10px}.brand h2{margin:5px 0 0;font-size:20px}.brand p{margin:2px 0;color:var(--orange);font-size:11px;letter-spacing:2px}
+.nav button{width:100%;background:transparent;border:0;color:#c9c4bd;text-align:left;padding:13px 12px;border-radius:10px;margin:3px 0}.nav button.active,.nav button:hover{background:#241b11;color:#fff;border-left:3px solid var(--orange)}
+.main{flex:1;padding:25px;max-width:1450px;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}.top h1{margin:0;font-size:28px}.badge{background:var(--orange);color:#111;padding:5px 9px;border-radius:20px;font-weight:800}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:linear-gradient(145deg,#211d18,#171513);border:1px solid var(--line);border-radius:16px;padding:18px}.metric{font-size:29px;font-weight:800;margin-top:7px}.muted{color:var(--muted);font-size:13px}.orange{color:var(--orange)}
+.grid{display:grid;grid-template-columns:1.35fr .65fr;gap:16px;margin-top:16px}.tablebox{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;overflow:auto}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:13px 9px;border-bottom:1px solid var(--line);font-size:13px}th{color:#aaa29a;font-weight:500}
+.status{padding:5px 9px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap}.status.proceso{background:#332713;color:#ffb43a}.status.pendiente{background:#302818;color:#ffd16b}.status.ok{background:#123523;color:#6be39a}.status.rechazado{background:#3a1717;color:#ff8c8c}
+.primary{border:0;background:var(--orange);color:#111;font-weight:800;border-radius:10px;padding:11px 15px}.secondary{border:1px solid var(--line);background:#211d18;color:#fff;border-radius:10px;padding:10px 14px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.section{display:none}.section.active{display:block}
+.form{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.field label{display:block;color:#aaa29a;font-size:12px;margin-bottom:6px}.field input,.field select{width:100%;background:#11100f;border:1px solid #443b31;color:#fff;border-radius:9px;padding:11px}
+.full{grid-column:1/-1}.quote-total{font-size:30px;font-weight:900;color:var(--orange)}
+.notice{padding:12px;border-radius:10px;background:#241b11;border:1px solid #5b3a14;margin:10px 0}
+@media(max-width:900px){.side{width:75px;padding:12px 8px}.brand h2,.brand p,.nav span{display:none}.brand img{width:55px;height:55px}.cards{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}}
+@media(max-width:600px){.main{padding:14px}.cards{grid-template-columns:1fr}.form{grid-template-columns:1fr}.top h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+  <div class="brand"><img src="logo.png" alt="JACO Y ASOCIADOS"><h2>JACO Y ASOCIADOS</h2><p>TRÁMITES VEHICULARES</p></div>
+  <div class="nav">
+    <button class="active" onclick="show('dashboard',this)">🏠 <span>Inicio</span></button>
+    <button onclick="show('vehiculos',this)">🚗 <span>Vehículos</span></button>
+    <button onclick="show('tramites',this)">📋 <span>Trámites</span></button>
+    <button onclick="show('cotizaciones',this)">💰 <span>Cotizaciones</span></button>
+    <button onclick="show('costos',this)">⚙️ <span>Mis costos</span></button>
+    <button onclick="show('clientes',this)">👥 <span>Clientes</span></button>
+    <button onclick="show('documentos',this)">📁 <span>Documentos</span></button>
+    <button onclick="show('pagos',this)">💳 <span>Pagos</span></button>
+    <button onclick="show('notificaciones',this)">🔔 <span>Notificaciones</span></button>
+  </div>
+</aside>
+<main class="main">
+<section id="dashboard" class="section active">
+ <div class="top"><div><h1>Panel Administrador</h1><div class="muted">Control de JACO Y ASOCIADOS</div></div><span class="badge">ADMIN</span></div>
+ <div class="cards">
+  <div class="card"><div class="muted">Trámites en proceso</div><div class="metric">28</div></div>
+  <div class="card"><div class="muted">Cotizaciones pendientes</div><div class="metric">15</div></div>
+  <div class="card"><div class="muted">Trámites completados</div><div class="metric">42</div></div>
+  <div class="card"><div class="muted">Ingresos registrados</div><div class="metric">$0.00</div></div>
+ </div>
+ <div class="grid">
+  <div class="tablebox"><h3>Actividad reciente</h3><table><thead><tr><th>Folio</th><th>Cliente</th><th>Trámite</th><th>Estado</th></tr></thead><tbody>
+   <tr><td>TRM-000158</td><td>José Martín</td><td>Cambio de propietario</td><td><span class="status proceso">En proceso</span></td></tr>
+   <tr><td>COT-000015</td><td>María López</td><td>Placas</td><td><span class="status pendiente">Cotización</span></td></tr>
+   <tr><td>TRM-000154</td><td>Carlos Ruiz</td><td>Tarjeta de circulación</td><td><span class="status ok">Completado</span></td></tr>
+  </tbody></table></div>
+  <div class="tablebox"><h3>Acciones rápidas</h3><div class="actions">
+   <button class="primary" onclick="show('cotizaciones')">+ Nueva cotización</button>
+   <button class="secondary" onclick="show('tramites')">+ Nuevo trámite</button>
+   <button class="secondary" onclick="show('clientes')">+ Cliente</button>
+  </div><div class="notice">💡 Tú decides los costos de gestión. Los cambios se reflejan en las nuevas cotizaciones.</div></div>
+ </div>
+</section>
+
+
+<section id="vehiculos" class="section">
+ <div class="top">
+  <div><h1>Registrar vehículo</h1><div class="muted">Estos datos se utilizarán para preparar la cotización.</div></div>
+  <span class="badge">PASO 1</span>
+ </div>
+ <div class="grid">
+  <div class="tablebox">
+   <h3>Datos del vehículo</h3>
+   <div class="form">
+    <div class="field full"><label>Número de serie / VIN *</label><input id="vvin" maxlength="17" placeholder="Ej. 3N1AB7AP0HY123456"></div>
+    <div class="field"><label>Placa *</label><input id="vplate" placeholder="ABC-123-A"></div>
+    <div class="field"><label>Marca *</label><input id="vbrand" placeholder="Nissan"></div>
+    <div class="field"><label>Modelo *</label><input id="vmodel" placeholder="Versa"></div>
+    <div class="field"><label>Año *</label><input id="vyear" type="number" min="1900" max="2100" placeholder="2026"></div>
+    <div class="field"><label>Tipo *</label><select id="vtype"><option value="">Selecciona</option><option>Sedán</option><option>SUV</option><option>Pickup</option><option>Hatchback</option><option>Motocicleta</option><option>Camión</option><option>Remolque</option><option>Otro</option></select></div>
+    <div class="field"><label>Color</label><input id="vcolor" placeholder="Blanco"></div>
+    <div class="field"><label>Estado de registro</label><input id="vstate" placeholder="Estado"></div>
+    <div class="field full"><label>Foto de tarjeta de circulación (opcional)</label><input id="vcard" type="file" accept="image/*,.pdf"></div>
+    <div class="full actions">
+      <button class="primary" onclick="saveVehicle()">Guardar vehículo y continuar a cotización</button>
+      <button class="secondary" onclick="clearVehicle()">Limpiar</button>
+    </div>
+   </div>
+  </div>
+  <div class="tablebox">
+   <h3>Vehículos registrados</h3>
+   <div id="vehicleList"></div>
+  </div>
+ </div>
+</section>
+
+<section id="tramites" class="section"><div class="top"><div><h1>Trámites</h1><div class="muted">Seguimiento de solicitudes</div></div><button class="primary" onclick="alert('Nuevo trámite creado como borrador')">+ Nuevo trámite</button></div>
+<div class="tablebox"><table><thead><tr><th>Folio</th><th>Cliente</th><th>Vehículo</th><th>Trámite</th><th>Estado</th></tr></thead><tbody>
+<tr><td>TRM-000158</td><td>José Martín</td><td>ABC-123-A</td><td>Cambio de propietario</td><td><span class="status proceso">En proceso</span></td></tr>
+<tr><td>TRM-000157</td><td>María López</td><td>XYZ-789-B</td><td>Placas</td><td><span class="status pendiente">Documentos</span></td></tr>
+<tr><td>TRM-000154</td><td>Carlos Ruiz</td><td>DEF-456-C</td><td>Tarjeta de circulación</td><td><span class="status ok">Completado</span></td></tr>
+</tbody></table></div></section>
+
+<section id="cotizaciones" class="section"><div class="top"><div><h1>Cotizaciones</h1><div class="muted">Crea una propuesta antes de iniciar el trámite</div></div></div>
+<div class="grid">
+<div class="tablebox"><h3>Nueva cotización</h3><div class="form">
+<div class="field"><label>Cliente</label><input id="qclient" placeholder="Nombre del cliente"></div>
+<div class="field"><label>Vehículo registrado</label><select id="qvehicle"><option value="">Selecciona un vehículo</option></select></div>
+<div class="field"><label>Tipo de trámite</label><select id="qtype"><option>Cambio de propietario</option><option>Alta de vehículo</option><option>Placas</option><option>Tarjeta de circulación</option><option>Licencia</option><option>Tenencia / Refrendo</option><option>Baja de vehículo</option></select></div>
+<div class="field"><label>Placas</label><input id="qplate" placeholder="ABC-123-A"></div>
+<div class="field full"><div id="vehicleSummary" class="notice" style="display:none"></div></div>
+<div class="field"><label>Vigencia</label><input type="date" id="qdate"></div>
+<div class="field"><label>Honorarios de gestión JACO Y ASOCIADOS</label><input type="number" id="qgestion" value="0" oninput="calc()"></div>
+<div class="field"><label>Derechos oficiales</label><input type="number" id="qderechos" value="0" oninput="calc()"></div>
+<div class="field"><label>Otros</label><input type="number" id="qotros" value="0" oninput="calc()"></div>
+<div class="field"><label>Descuento</label><input type="number" id="qdesc" value="0" oninput="calc()"></div>
+<div class="full"><div class="muted">TOTAL</div><div class="quote-total" id="qtotal">$0.00</div></div>
+<div class="full actions"><button class="primary" onclick="saveQuote()">Guardar y enviar cotización</button><button class="secondary" onclick="clearQuote()">Limpiar</button></div>
+</div></div>
+<div class="tablebox"><h3>Últimas cotizaciones</h3><div id="quoteList"></div></div>
+</div></section>
+
+<section id="costos" class="section"><div class="top"><div><h1>Mis costos de gestión</h1><div class="muted">Estos importes los defines tú. Son editables.</div></div></div>
+<div class="tablebox"><div class="form">
+<div class="field"><label>Cambio de propietario</label><input id="c1" type="number" value="800"></div>
+<div class="field"><label>Alta de vehículo</label><input id="c2" type="number" value="700"></div>
+<div class="field"><label>Placas</label><input id="c3" type="number" value="500"></div>
+<div class="field"><label>Tarjeta de circulación</label><input id="c4" type="number" value="350"></div>
+<div class="field"><label>Licencia</label><input id="c5" type="number" value="300"></div>
+<div class="field"><label>Tenencia / Refrendo</label><input id="c6" type="number" value="250"></div>
+<div class="full"><button class="primary" onclick="saveCosts()">Guardar costos</button><div id="costMsg" class="notice" style="display:none">✓ Costos guardados correctamente.</div></div>
+</div></div></section>
+
+<section id="clientes" class="section"><div class="top"><div><h1>Clientes</h1><div class="muted">Base de clientes</div></div></div>
+<div class="tablebox"><table><thead><tr><th>Cliente</th><th>Teléfono</th><th>Vehículo</th><th>Trámites</th></tr></thead><tbody>
+<tr><td>José Martín</td><td>555 123 4567</td><td>ABC-123-A · Nissan Versa</td><td>2</td></tr>
+<tr><td>María López</td><td>555 222 8899</td><td>XYZ-789-B · Chevrolet Aveo</td><td>1</td></tr>
+<tr><td>Carlos Ruiz</td><td>555 333 1122</td><td>DEF-456-C · Honda City</td><td>3</td></tr>
+</tbody></table></div></section>
+
+<section id="documentos" class="section"><div class="top"><div><h1>Documentos</h1><div class="muted">Revisa y valida documentación</div></div></div>
+<div class="tablebox"><table><thead><tr><th>Cliente</th><th>Documento</th><th>Fecha</th><th>Estado</th><th>Acción</th></tr></thead><tbody>
+<tr><td>José Martín</td><td>INE frente</td><td>15/05/2026</td><td><span class="status ok">Aprobado</span></td><td><button class="secondary">Ver</button></td></tr>
+<tr><td>José Martín</td><td>Comprobante domicilio</td><td>15/05/2026</td><td><span class="status pendiente">Pendiente</span></td><td><button class="secondary">Revisar</button></td></tr>
+<tr><td>María López</td><td>Factura vehículo</td><td>16/05/2026</td><td><span class="status pendiente">Pendiente</span></td><td><button class="secondary">Revisar</button></td></tr>
+</tbody></table></div></section>
+
+<section id="pagos" class="section"><div class="top"><div><h1>Pagos</h1><div class="muted">Control de pagos y adeudos</div></div></div>
+<div class="cards"><div class="card"><div class="muted">Pendientes</div><div class="metric">$0.00</div></div><div class="card"><div class="muted">Cobrado este mes</div><div class="metric">$0.00</div></div><div class="card"><div class="muted">Pagos registrados</div><div class="metric">0</div></div><div class="card"><div class="muted">Reembolsos</div><div class="metric">$0.00</div></div></div>
+<div class="tablebox" style="margin-top:16px"><h3>Movimientos</h3><p class="muted">Aquí aparecerán los pagos aceptados por tus clientes.</p></div></section>
+
+<section id="notificaciones" class="section"><div class="top"><div><h1>Notificaciones</h1><div class="muted">Comunicación con clientes</div></div></div>
+<div class="tablebox"><div class="notice">🟠 Documentos en revisión — TRM-000158</div><div class="notice">🟠 Cotización pendiente de aceptación — COT-000015</div><div class="notice">🟢 Trámite completado — TRM-000154</div><button class="primary" onclick="alert('Módulo de envío de notificaciones listo para conectar')">+ Enviar notificación</button></div></section>
+</main></div>
+
+<script>
+const money=n=>new Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN'}).format(Number(n)||0);
+function show(id,btn){document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');}
+function calc(){let a=['qgestion','qderechos','qotros'].reduce((s,id)=>s+(Number(document.getElementById(id).value)||0),0);a-=Number(document.getElementById('qdesc').value)||0;document.getElementById('qtotal').textContent=money(Math.max(0,a))}
+function clearQuote(){['qclient','qplate'].forEach(id=>document.getElementById(id).value='');['qgestion','qderechos','qotros','qdesc'].forEach(id=>document.getElementById(id).value=0);calc()}
+function saveQuote(){const q={id:'COT-'+String(Date.now()).slice(-6),client:document.getElementById('qclient').value||'Cliente nuevo',type:document.getElementById('qtype').value,total:document.getElementById('qtotal').textContent};let arr=JSON.parse(localStorage.getItem('jacoQuotes')||'[]');arr.unshift(q);localStorage.setItem('jacoQuotes',JSON.stringify(arr));renderQuotes();alert('Cotización guardada.');}
+function renderQuotes(){let arr=JSON.parse(localStorage.getItem('jacoQuotes')||'[]');document.getElementById('quoteList').innerHTML=arr.length?arr.map(q=>`<div class="notice"><b>${q.id}</b><br>${q.client} · ${q.type}<br><strong class="orange">${q.total}</strong> <span class="status pendiente">Pendiente</span></div>`).join(''):'<p class="muted">Todavía no hay cotizaciones creadas.</p>'}
+function saveCosts(){localStorage.setItem('jacoCosts',JSON.stringify([...document.querySelectorAll('#costos input')].map(x=>x.value)));document.getElementById('costMsg').style.display='block';setTimeout(()=>document.getElementById('costMsg').style.display='none',1800)}
+
+function getVehicles(){return JSON.parse(localStorage.getItem('jacoVehicles')||'[]')}
+function saveVehicle(){
+  const required=[['vvin','Número de serie/VIN'],['vplate','Placa'],['vbrand','Marca'],['vmodel','Modelo'],['vyear','Año'],['vtype','Tipo']];
+  for(const [id,label] of required){if(!document.getElementById(id).value.trim()){alert('Falta: '+label);return}}
+  const file=document.getElementById('vcard').files[0];
+  const v={id:'VEH-'+String(Date.now()).slice(-6),vin:document.getElementById('vvin').value.trim().toUpperCase(),plate:document.getElementById('vplate').value.trim().toUpperCase(),brand:document.getElementById('vbrand').value.trim(),model:document.getElementById('vmodel').value.trim(),year:document.getElementById('vyear').value,type:document.getElementById('vtype').value,color:document.getElementById('vcolor').value.trim(),state:document.getElementById('vstate').value.trim(),card:file?file.name:''};
+  let arr=getVehicles();arr.unshift(v);localStorage.setItem('jacoVehicles',JSON.stringify(arr));renderVehicles();populateVehicleSelect();alert('Vehículo registrado correctamente. Ahora puedes generar su cotización.');show('cotizaciones');document.getElementById('qvehicle').value=v.id;loadVehicleIntoQuote(v.id);
+}
+function clearVehicle(){['vvin','vplate','vbrand','vmodel','vyear','vcolor','vstate'].forEach(id=>document.getElementById(id).value='');document.getElementById('vtype').value='';document.getElementById('vcard').value=''}
+function renderVehicles(){const arr=getVehicles();document.getElementById('vehicleList').innerHTML=arr.length?arr.map(v=>`<div class="notice"><b>${v.brand} ${v.model} ${v.year}</b><br>Placa: ${v.plate} · Tipo: ${v.type}<br>Serie: ${v.vin}${v.card?'<br>📎 '+v.card:''}</div>`).join(''):'<p class="muted">Todavía no hay vehículos registrados.</p>'}
+function populateVehicleSelect(){const s=document.getElementById('qvehicle');const arr=getVehicles();s.innerHTML='<option value="">Selecciona un vehículo</option>'+arr.map(v=>`<option value="${v.id}">${v.plate} · ${v.brand} ${v.model} ${v.year}</option>`).join('')}
+function loadVehicleIntoQuote(id){const v=getVehicles().find(x=>x.id===id);if(!v){document.getElementById('vehicleSummary').style.display='none';return}document.getElementById('qplate').value=v.plate;document.getElementById('vehicleSummary').style.display='block';document.getElementById('vehicleSummary').innerHTML=`🚗 <b>${v.brand} ${v.model} ${v.year}</b> · ${v.type}<br>Placa: ${v.plate} · Serie: ${v.vin}`;}
+document.addEventListener('change',e=>{if(e.target.id==='qvehicle')loadVehicleIntoQuote(e.target.value)})
+const originalSaveQuote=saveQuote;
+saveQuote=function(){
+  const vid=document.getElementById('qvehicle').value;
+  if(!vid){alert('Primero registra o selecciona el vehículo del cliente.');show('vehiculos');return}
+  const v=getVehicles().find(x=>x.id===vid);
+  const old=window.localStorage.getItem('jacoQuotes');
+  const q={id:'COT-'+String(Date.now()).slice(-6),client:document.getElementById('qclient').value||'Cliente nuevo',vehicleId:vid,vehicle:`${v.brand} ${v.model} ${v.year} · ${v.plate}`,type:document.getElementById('qtype').value,total:document.getElementById('qtotal').textContent};
+  let arr=JSON.parse(old||'[]');arr.unshift(q);localStorage.setItem('jacoQuotes',JSON.stringify(arr));renderQuotes();alert('Cotización guardada con los datos del vehículo.');
+}
+const originalRenderQuotes=renderQuotes;
+renderQuotes=function(){let arr=JSON.parse(localStorage.getItem('jacoQuotes')||'[]');document.getElementById('quoteList').innerHTML=arr.length?arr.map(q=>`<div class="notice"><b>${q.id}</b><br>${q.client} · ${q.type}<br>🚗 ${q.vehicle||'Sin vehículo'}<br><strong class="orange">${q.total}</strong> <span class="status pendiente">Pendiente</span></div>`).join(''):'<p class="muted">Todavía no hay cotizaciones creadas.</p>'}
+calc();renderQuotes();renderVehicles();populateVehicleSelect();
+
+</script>
+</body></html>
